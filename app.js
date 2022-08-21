@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const request = require('postman-request');
-const http = require('http');
+const https = require('https');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const bodyParser = require('body-parser');
 
@@ -55,7 +55,8 @@ app.post("/" , function(req , res){
 // So the catch statement is executed when there is an error so if anything goes wrong the code in the catch code is executed. In the catch block we're sending back the failure page. This means if anything goes wrong send the faliure page
  run().catch(e => res.sendFile(__dirname + "/failure.html"));
 });
+ let port = process.env.PORT || 3000;
 
-app.listen(process.env.POST || 3000, function(){
+app.listen(port, function(){
 console.log("world is listening")
 })
